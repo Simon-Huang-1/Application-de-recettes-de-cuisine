@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="editList" prefHeight="148.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="ME_managementPane" layoutX="38.0" layoutY="2.0" minHeight="0.0" minWidth="0.0" prefHeight="137.0" prefWidth="318.0">
+         <children>
+            <TextField fx:id="ME_managementPane_newname_input" layoutX="14.0" layoutY="56.0" promptText="Enter name" />
+            <Button fx:id="ME_managementPane_create_button" layoutX="173.0" layoutY="56.0" mnemonicParsing="false" onAction="#ME_Create_List" prefHeight="25.0" prefWidth="131.0" text="Create new list" />
+            <ComboBox fx:id="ME_list_combo" layoutX="13.0" layoutY="14.0" prefHeight="25.0" prefWidth="149.0" promptText="Select a list" />
+            <Button fx:id="ME_confirm_button" layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#ME_Select_List_Confirm" prefHeight="26.0" prefWidth="131.0" text="Confirm" />
+            <Button fx:id="ME_managementPane_delete_button" layoutX="173.0" layoutY="97.0" mnemonicParsing="false" onAction="#ME_Delete_List" prefHeight="25.0" prefWidth="131.0" text="Delete selected list" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
