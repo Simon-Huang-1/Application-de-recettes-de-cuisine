@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="739.0" minWidth="1284.0" prefHeight="739.0" prefWidth="1284.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.tse.fise2.controller.AppController">
+  <tabs>
+      <Tab fx:id="my_pantry_TAB" closable="false" text="My pantry">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="MP_tableview" layoutX="455.0" layoutY="84.0" prefHeight="409.0" prefWidth="516.0">
+                     <columns>
+                        <TableColumn fx:id="MP_tableview_NAME" editable="false" prefWidth="160.0" text="Name" />
+                        <TableColumn fx:id="MP_tableview_QUANTITY" editable="false" prefWidth="122.0" text="Quantity" />
+                        <TableColumn fx:id="MP_tableview_UNITS" editable="false" prefWidth="87.0" text="Units" />
+                        <TableColumn fx:id="MP_tableview_EXPDATE" editable="false" prefWidth="131.0" text="Exp. date" />
+                        <TableColumn fx:id="MP_tableview_CONSUME" editable="false" prefWidth="-1.0" text="Consume" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+                  <Label layoutX="454.0" layoutY="32.0" text="Current contents of my pantry/fridge :">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TitledPane fx:id="MP_selected_titlePane" animated="false" collapsible="false" layoutX="454.0" layoutY="537.0" prefHeight="113.0" prefWidth="518.0" text="With selected item :">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="MP_selected_Delete" layoutX="6.0" layoutY="31.0" mnemonicParsing="false" onAction="#MP_Delete_element" prefHeight="25.0" prefWidth="75.0" text="Delete" />
+                              <TextField fx:id="MP_selected_quantity" layoutX="87.0" layoutY="31.0" prefHeight="25.0" prefWidth="86.0" promptText="Modify quantity" />
+                              <ComboBox fx:id="MP_selected_units_combo" layoutX="179.0" layoutY="31.0" prefHeight="25.0" prefWidth="107.0" promptText="Select unit" />
+                              <DatePicker fx:id="MP_selected_date" layoutX="293.0" layoutY="31.0" prefHeight="25.0" prefWidth="132.0" promptText="Modify exp. date" />
+                              <Button fx:id="MP_selected_confirm" layoutX="431.0" layoutY="31.0" mnemonicParsing="false" onAction="#MP_Modify_confirm" prefHeight="25.0" prefWidth="78.0" text="Confirm" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="MP_AddPane" animated="false" collapsible="false" layoutX="39.0" layoutY="84.0" prefHeight="409.0" prefWidth="323.0" text="Add an ingredient">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="353.0">
+                           <children>
+                              <Button fx:id="MP_AddPane_searchButton" layoutX="205.0" layoutY="9.0" mnemonicParsing="false" onAction="#MP_Add_Search" text="Search" />
+                              <TextField fx:id="MP_AddPane_ingredient_input" layoutX="40.0" layoutY="9.0" promptText="Type an ingredient" />
+                              <ListView fx:id="MP_AddPane_ingredientResult_list" layoutX="43.0" layoutY="48.0" prefHeight="145.0" prefWidth="217.0" />
+                              <TextField fx:id="MP_AddPane_quantity_imput" layoutX="45.0" layoutY="206.0" promptText="Set quantity" />
+                              <ComboBox fx:id="MP_AddPane_units_combo" layoutX="45.0" layoutY="245.0" prefWidth="150.0" promptText="Select units" />
+                              <DatePicker fx:id="MP_AddPane_ingredient_exp_date" layoutX="45.0" layoutY="285.0" promptText="Set exp. date" />
+                              <Button fx:id="MP_AddPane_confirm_button" layoutX="43.0" layoutY="329.0" mnemonicParsing="false" onAction="#MP_Add_Confirm" prefHeight="37.0" prefWidth="73.0" text="Confirm" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab fx:id="my_ingredients_TAB" closable="false" text="My ingredient's lists">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="MI_Listview" layoutX="455.0" layoutY="84.0" prefHeight="409.0" prefWidth="516.0">
+                     <columns>
+                        <TableColumn fx:id="MI_Listview_NAME" editable="false" prefWidth="160.0" text="Name" />
+                        <TableColumn fx:id="MI_Listview_QUANTITY" editable="false" prefWidth="122.0" text="Quantity" />
+                        <TableColumn fx:id="MI_Listview_UNITS" editable="false" prefWidth="87.0" text="Units" />
+                        <TableColumn fx:id="MI_Listview_EXPDATE" editable="false" prefWidth="145.0" text="Exp. date" />
+                        <TableColumn fx:id="MI_Listview_CONSUME" editable="false" prefWidth="145.0" text="Consume" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+                  <Label fx:id="MI_title" layoutX="455.0" layoutY="32.0" text="Current contents of :">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TitledPane fx:id="MI_selectedPane" animated="false" collapsible="false" layoutX="454.0" layoutY="537.0" prefHeight="113.0" prefWidth="518.0" text="With selected item :">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="MI_selectedPane_delete_button" layoutX="6.0" layoutY="31.0" mnemonicParsing="false" onAction="#MI_Delete_Ing" prefHeight="25.0" prefWidth="75.0" text="Delete" />
+                              <TextField fx:id="MI_selectedPane_quantity_input" layoutX="87.0" layoutY="31.0" prefHeight="25.0" prefWidth="86.0" promptText="Modify quantity" />
+                              <ComboBox fx:id="MP_selectedPane_units_combo" layoutX="179.0" layoutY="31.0" prefHeight="25.0" prefWidth="107.0" promptText="Select unit" />
+                              <DatePicker fx:id="MI_selectedPane_date" layoutX="293.0" layoutY="31.0" prefHeight="25.0" prefWidth="132.0" promptText="Modify exp. date" />
+                              <Button fx:id="MI_selectedPane_confirm_button" layoutX="431.0" layoutY="31.0" mnemonicParsing="false" onAction="#MI_Modify_Ing" prefHeight="25.0" prefWidth="78.0" text="Confirm" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="MI_ingredientPane" animated="false" collapsible="false" layoutX="39.0" layoutY="256.0" prefHeight="409.0" prefWidth="323.0" text="Add an ingredient">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="353.0">
+                           <children>
+                              <Button fx:id="MI_ingredientPane_search_button" layoutX="205.0" layoutY="9.0" mnemonicParsing="false" onAction="#MI_Search_Ing" text="Search" />
+                              <TextField fx:id="MI_ingredientPane_type_input" layoutX="40.0" layoutY="9.0" promptText="Type an ingredient" />
+                              <ListView fx:id="MI_ingredientPane_result_list" layoutX="43.0" layoutY="48.0" prefHeight="145.0" prefWidth="217.0" />
+                              <TextField fx:id="MI_ingredientPane_quantity_input" layoutX="45.0" layoutY="206.0" promptText="Set quantity" />
+                              <ComboBox fx:id="MI_ingredientPane_units_combo" layoutX="45.0" layoutY="245.0" prefWidth="150.0" promptText="Select units" />
+                              <DatePicker fx:id="MI_ingredientPane_date" layoutX="45.0" layoutY="285.0" promptText="Set exp. date" />
+                              <Button fx:id="MI_ingredientPane_confirm_button" layoutX="43.0" layoutY="329.0" mnemonicParsing="false" onAction="#MI_Confirm_Search" prefHeight="37.0" prefWidth="73.0" text="Confirm" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <Label fx:id="MI_date_hour" layoutX="542.0" layoutY="52.0" text="Created : ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <TitledPane fx:id="MI_managementPane" animated="false" layoutX="39.0" layoutY="28.0" prefHeight="194.0" prefWidth="321.0" text="List management">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="137.0" prefWidth="318.0">
+                           <children>
+                              <Button fx:id="MI_Edit_Button" layoutX="31.0" layoutY="84.0" mnemonicParsing="false" onAction="#MI_Edit_List" prefHeight="47.0" prefWidth="89.0" text="Edit lists" />
+                              <ComboBox fx:id="MI_list_combo" layoutX="31.0" layoutY="32.0" prefWidth="150.0" promptText="Select a list" />
+                              <Button fx:id="MI_confirm_button" layoutX="210.0" layoutY="32.0" mnemonicParsing="false" onAction="#MI_Select_List_Confirm" prefHeight="26.0" prefWidth="88.0" text="Display" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab fx:id="my_recipes_TAB" closable="false" text="My recipes">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TitledPane fx:id="MR_managerPane" animated="false" layoutX="39.0" layoutY="68.0" prefHeight="402.0" prefWidth="292.0" text="Recipe manager" translateY="-20.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="287.0" translateY="-20.0">
+                           <children>
+                              <TextField fx:id="MR_managerPane_search_input" layoutX="21.0" layoutY="84.0" prefHeight="25.0" prefWidth="247.0" promptText="Search a recipe" />
+                              <Button fx:id="MR_managerPane_namesearch_button" layoutX="99.0" layoutY="158.0" mnemonicParsing="false" onAction="#MR_Recipe_Search" prefHeight="25.0" prefWidth="81.0" text="Search" />
+                              <ListView fx:id="MR_managerPane_searchresult_list" layoutX="14.0" layoutY="195.0" prefHeight="115.0" prefWidth="250.0" />
+                              <Button fx:id="MR_managerPane_displaysearch_button" layoutX="14.0" layoutY="319.0" mnemonicParsing="false" onAction="#MR_Recipe_SearchbyDisplay" prefHeight="25.0" prefWidth="250.0" text="Display selected recipe" />
+                              <ComboBox fx:id="MR_managerPane_list_combo" disable="true" layoutX="21.0" layoutY="122.0" prefHeight="25.0" prefWidth="246.0" promptText="Select a list" />
+                              <RadioButton fx:id="MR_managerPane_radioNameSearch" layoutX="21.0" layoutY="31.0" mnemonicParsing="false" onAction="#MR_SwitchtoName" selected="true" text="Search by name">
+                              <toggleGroup>
+                                    <ToggleGroup fx:id="MR" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton fx:id="MR_managerPane_radioListSearch" alignment="TOP_LEFT" layoutX="145.0" layoutY="31.0" mnemonicParsing="false" onAction="#MR_SwitchtoName" text="Search by list&#10;(Maximise ingredients)" toggleGroup="$MR" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <Button fx:id="MR_favoriteAdd_button" layoutX="750.0" layoutY="115.0" mnemonicParsing="false" onAction="#MR_AddtoFavs" prefHeight="35.0" prefWidth="40.0" text="+" translateY="-20.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Label fx:id="MR_recipe_label" layoutX="533.0" layoutY="67.0" text="Recipe Title" translateY="-20.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="MR_time_label" layoutX="393.0" layoutY="72.0" text="45 min" translateY="-20.0" />
+                  <ImageView fx:id="MR_recipe_picture" fitHeight="226.0" fitWidth="358.0" layoutX="393.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" translateY="-20.0" />
+                  <TableView fx:id="MR_ingredient_list" layoutX="393.0" layoutY="376.0" prefHeight="233.0" prefWidth="339.0" translateY="-20.0">
+                    <columns>
+                      <TableColumn fx:id="MR_ingredient_list_NAME" prefWidth="143.0" text="Name" />
+                      <TableColumn fx:id="MR_ingredient_list_QUANTITY" prefWidth="72.0" text="Quantity" />
+                        <TableColumn fx:id="MR_ingredient_list_UNITS" prefWidth="49.0" text="Units" />
+                        <TableColumn fx:id="MR_ingredient_list_AVAILABILITY" prefWidth="73.0" text="Availability" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button fx:id="MR_Compare_Button" layoutX="642.0" layoutY="616.0" mnemonicParsing="false" onAction="#MR_ComparetoList" prefHeight="31.0" prefWidth="90.0" text="Compare" translateY="-20.0" />
+                  <ComboBox fx:id="MR_compareCombobox" layoutX="393.0" layoutY="616.0" prefHeight="25.0" prefWidth="232.0" promptText="Select a list to compare to" translateY="-20.0" />
+                 
+                  <Button fx:id="MR_viewInstructions_button" layoutX="750.0" layoutY="376.0" mnemonicParsing="false" onAction="#MR_ViewInstructions" prefHeight="29.0" prefWidth="159.0" text="View instructions" translateY="-20.0" />
+                  <Label fx:id="MR_serving_label" layoutX="750.0" layoutY="277.0" text="Number of servings :" translateY="-20.0" />
+                  <TextField fx:id="MR_serving_number" layoutX="750.0" layoutY="297.0" prefWidth="70.0" promptText="Servings..." translateY="-20.0" />
+                  <Button fx:id="MR_EditServing_button" layoutX="750.0" layoutY="328.0" mnemonicParsing="false" onAction="#MR_EditAmounts" prefHeight="25.0" prefWidth="159.0" text="Edit serving numbers" translateY="-20.0" />
+                  <Label fx:id="MR_CaloriesText" layoutX="750.0" layoutY="425.0" text="Calories (g) :" translateY="-20.0" />
+                  <Label fx:id="MR_CarbsText" layoutX="750.0" layoutY="453.0" text="Carbohydrates (g) :" translateY="-20.0" />
+                  <Label fx:id="MR_FatsText" layoutX="750.0" layoutY="484.0" text="Fats (g) :" translateY="-20.0" />
+                  <Label fx:id="MR_ProteinsText" layoutX="750.0" layoutY="513.0" text="Proteins (g) :" translateY="-20.0" />
+                  <Label fx:id="MR_Calories_amount" layoutX="881.0" layoutY="425.0" text="0" translateY="-20.0" />
+                  <Label fx:id="MR_Carbs_amount" layoutX="881.0" layoutY="453.0" text="0" translateY="-20.0" />
+                  <Label fx:id="MR_Fats_amount" layoutX="881.0" layoutY="484.0" text="0" translateY="-20.0" />
+                  <Label fx:id="MR_Proteins_amount" layoutX="881.0" layoutY="513.0" text="0" translateY="-20.0" />
+                  
+                  <TitledPane fx:id="MR_FavsPane" animated="false" layoutX="967.0" layoutY="52.0" prefHeight="427.0" prefWidth="271.0" text="Favorites manager">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="269.0" translateY="-20.0">
+                           <children>
+                              <Label fx:id="MR_Favs_text" layoutX="9.0" layoutY="36.0" text="My favorite recipes" />
+                              <ListView fx:id="MR_managerPane_favorite_list" layoutX="9.0" layoutY="68.0" prefHeight="215.0" prefWidth="250.0" />
+                              <Button fx:id="MR_managerPane_favoritedisplay_button" layoutX="9.0" layoutY="341.0" mnemonicParsing="false" onAction="#MR_Recipe_FavoriteDisplay" prefHeight="25.0" prefWidth="250.0" text="Display selected recipe" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <Button fx:id="MR_AddToShoppingList" layoutX="393.0" layoutY="655.0" mnemonicParsing="false" onAction="#MR_AddShoppinglist" prefHeight="31.0" prefWidth="157.0" text="Add to shopping list" translateY="-20.0" />
+                  <Button fx:id="MR_SaveShoppingList" layoutX="642.0" layoutY="655.0" mnemonicParsing="false" onAction="#MR_SavingPDF" prefHeight="31.0" prefWidth="90.0" text="Save" translateY="-20.0" />
+                  <Button fx:id="MR_Refresh_ShoppingList" layoutX="554.0" layoutY="655.0" mnemonicParsing="false" onAction="#MR_RefreshList" prefHeight="32.0" prefWidth="70.0" text="Refresh" translateY="-20.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="settings_TAB" closable="false" text="Profile">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TitledPane fx:id="MN_ProfilePane" animated="false" collapsible="false" layoutX="39.0" layoutY="11.0" prefHeight="634.0" prefWidth="257.0" text="Profile">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="608.0" prefWidth="272.0">
+                           <children>
+                              <TextField fx:id="MN_ProfilePane_name_input" layoutX="80.0" layoutY="168.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter name" />
+                              <ImageView fx:id="MN_ProfilePane_profile_picture" fitHeight="119.0" fitWidth="142.0" layoutX="29.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                              	<image>
+                              		<Image url="/images/user_icon.png" />
+                              	</image>
+                              </ImageView>
+                              <ComboBox fx:id="MN_ProfilePane_gender_combo" layoutX="17.0" layoutY="213.0" prefHeight="25.0" prefWidth="227.0" promptText="Gender" />
+                              <TextField fx:id="MN_ProfilePane_weight_input" layoutX="79.0" layoutY="349.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter weight (kg)" />
+                              <TextField fx:id="MN_ProfilePane_size_input" layoutX="80.0" layoutY="301.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter size (cm)" />
+                              <TextField fx:id="MN_ProfilePane_age_input" layoutX="80.0" layoutY="258.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter age" />
+                              <ComboBox fx:id="MN_ProfilePane_activity_combo" layoutX="17.0" layoutY="444.0" prefHeight="25.0" prefWidth="228.0" promptText="Activity" />
+                              <Label fx:id="MN_ProfilePane_BMI" layoutX="17.0" layoutY="393.0" prefHeight="36.0" prefWidth="109.0" text="BMI&#10;(Body Mass Index)" />
+                              <Button fx:id="MN_ProfilePane_Button_Calculate" layoutX="48.0" layoutY="550.0" mnemonicParsing="false" onAction="#MN_Calculate_Calories" prefHeight="43.0" prefWidth="165.0" text="Calculate" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="490.0" prefHeight="49.0" prefWidth="165.0" text="Calculate daily nutrient&#10;intake by clicking on&#10;the button below" />
+                              <Label layoutX="17.0" layoutY="258.0" prefHeight="25.0" prefWidth="57.0" text="Age" />
+                              <Label layoutX="17.0" layoutY="168.0" prefHeight="25.0" prefWidth="57.0" text="Name" />
+                              <Label layoutX="17.0" layoutY="297.0" prefHeight="34.0" prefWidth="57.0" text="Size&#10;(cm)" />
+                              <Label layoutX="16.0" layoutY="345.0" prefHeight="33.0" prefWidth="57.0" text="Weight&#10;(kg)" />
+                              <Label fx:id="MN_ProfilePane_BMI_Value" layoutX="167.0" layoutY="393.0" prefHeight="36.0" prefWidth="50.0" text="0">
+	                          	<font>
+	                            	<Font size="15.0" />
+	                          	</font>
+	                          </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <AnchorPane fx:id="MN_Nutrients_Pane" layoutX="303.0" layoutY="331.0" prefHeight="334.0" prefWidth="618.0">
+                     <children>
+                        <Pane layoutX="22.0" layoutY="30.0" prefHeight="252.0" prefWidth="200.0" style="-fx-border-color: black;">
+                           <children>
+                              <Pane fx:id="MN_ModCarbs_Protein_Pane" layoutY="69.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_ModerateCarbsProtValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="28.0" text="protein">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Label fx:id="MN_ModerateCarbs" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" prefHeight="70.0" prefWidth="204.0" text="Moderate carbs&#10;(30/35/35)">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutY="130.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_ModerateCarbsFatsValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="27.0" text="fats">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="191.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_ModerateCarbsCarbsValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="27.0" text="carbs">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children></Pane>
+                        <Pane layoutX="422.0" layoutY="30.0" prefHeight="252.0" prefWidth="200.0" style="-fx-border-color: black;">
+                           <children>
+                              <Pane layoutY="69.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_HigherCarbsProtValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="28.0" text="protein">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Label fx:id="MN_HigherCarbs" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="70.0" prefWidth="204.0" text="Higher carbs&#10;(30/20/50)">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutY="130.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_HigherCarbsFatsValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="27.0" text="fats">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="191.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_HigherCarbsCarbsValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="27.0" text="carbs">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="222.0" layoutY="30.0" prefHeight="252.0" prefWidth="200.0" style="-fx-border-color: black;">
+                           <children>
+                              <Pane layoutY="69.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_LowerCarbsProtValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="28.0" text="protein">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Label fx:id="MN_LowerCarbs" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" prefHeight="71.0" prefWidth="204.0" text="Lower carbs&#10;(40/40/20)">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutY="130.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_LowerCarbsFatsValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="27.0" text="fats">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="191.0" prefHeight="61.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="MN_LowerCarbsCarbsValue" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="2.0" text="0 g">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="27.0" text="carbs">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <Label layoutX="22.0" layoutY="6.0" text="30/35/35 means 30% protein, 35% fats, 35% carbs">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="MN_Calories_per_activity_Pane" layoutX="951.0" layoutY="186.0" prefHeight="281.0" prefWidth="303.0">
+                     <children>
+                        <Pane fx:id="MN_BasalMetabollicRatePane" layoutY="3.0" prefHeight="43.0" prefWidth="301.0" style="-fx-border-color: black">
+                           <children>
+                              <Label fx:id="MN_BasalMetabollicRateText" layoutX="7.0" layoutY="15.0" style="-fx-font-weight: bold;" text="Basal Metabollic Rate" />
+                              <Label fx:id="MN_Calories_amount1" layoutX="147.0" layoutY="15.0" prefHeight="17.0" prefWidth="154.0" text="0 calories per day" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="MN_SedentaryPane" layoutY="46.0" prefHeight="43.0" prefWidth="301.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label fx:id="MN_SedentaryText" layoutX="7.0" layoutY="15.0" style="-fx-font-weight: bold;" text="Sedentary" />
+                              <Label fx:id="MN_Calories_amount2" layoutX="147.0" layoutY="15.0" prefHeight="17.0" prefWidth="154.0" text="0 calories per day" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="MN_LightExercisePane" layoutY="89.0" prefHeight="43.0" prefWidth="301.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label fx:id="MN_LightExerciseText" layoutX="7.0" layoutY="15.0" style="-fx-font-weight: bold;" text="Light exercise" />
+                              <Label fx:id="MN_Calories_amount3" layoutX="147.0" layoutY="15.0" prefHeight="17.0" prefWidth="154.0" text="0 calories per day" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="MN_ModerateExercisePane" layoutY="132.0" prefHeight="43.0" prefWidth="301.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label fx:id="MN_ModerateExerciseText" layoutX="7.0" layoutY="15.0" style="-fx-font-weight: bold;" text="Moderate exercise" />
+                              <Label fx:id="MN_Calories_amount4" layoutX="147.0" layoutY="15.0" prefHeight="17.0" prefWidth="154.0" text="0 calories per day" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="MN_HeavyExercisePane" layoutY="175.0" prefHeight="43.0" prefWidth="301.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label fx:id="MN_HeavyExerciseText" layoutX="7.0" layoutY="15.0" style="-fx-font-weight: bold;" text="Heavy exercise" />
+                              <Label fx:id="MN_Calories_amount5" layoutX="147.0" layoutY="15.0" prefHeight="17.0" prefWidth="154.0" text="0 calories per day" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="MN_AthletePane" layoutY="218.0" prefHeight="43.0" prefWidth="301.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label fx:id="MN_AthleteText" layoutX="7.0" layoutY="15.0" style="-fx-font-weight: bold;" text="Athlete" />
+                              <Label fx:id="MN_Calories_amount6" layoutX="147.0" layoutY="15.0" prefHeight="17.0" prefWidth="154.0" text="0 calories per day" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+                  <Pane layoutX="312.0" layoutY="67.0" prefHeight="211.0" prefWidth="597.0">
+                     <children>
+                        <Label fx:id="MN_MaintenanceCaloriesText" layoutX="178.0" layoutY="-5.0" text="Your maintenance calories">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Pane fx:id="MN_caloriesDay_Pane" layoutX="14.0" layoutY="73.0" prefHeight="138.0" prefWidth="295.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label fx:id="MN_CaloriesDayValue" layoutX="143.0" layoutY="32.0" text="0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="MN_CaloriesDayText" layoutX="92.0" layoutY="69.0" text="calories per day">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="MN_caloriesWeek_Pane" layoutX="309.0" layoutY="73.0" prefHeight="138.0" prefWidth="295.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label fx:id="MN_CaloriesWeekValue" layoutX="143.0" layoutY="32.0" text="0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="MN_CaloriesWeekText" layoutX="92.0" layoutY="69.0" text="calories per week">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Label layoutX="951.0" layoutY="135.0" text="Calories according to activity level">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
